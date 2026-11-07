@@ -16,6 +16,7 @@ namespace _02_interlocker
             int value, int comparand) – сравнивает location и comparand и 
                                         присваивает location value в случае успеха.
     */
+    
     class Counter
     {
         public static int count;
@@ -24,6 +25,7 @@ namespace _02_interlocker
     {
         static void Main(string[] args)
         {
+          
             Thread[] threads = new Thread[5];
             for (int i = 0; i < threads.Length; ++i)
             {
@@ -31,6 +33,7 @@ namespace _02_interlocker
                 {
                     for (int j = 1; j <= 1_000_000; ++j)
                     {
+                      
                         Interlocked.Increment(ref Counter.count);
                     }
                 });

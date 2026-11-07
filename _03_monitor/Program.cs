@@ -96,9 +96,13 @@ namespace _03_monitor
                     try
                     {
                         ++number;
+                        //ex
                         if (number % 2 == 0)
+                            //ex
                             ++even;
-                    }
+                        //ex
+                       
+                    }               
                     finally
                     {
                         Monitor.Exit(this); // unblock

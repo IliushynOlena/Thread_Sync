@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,25 +22,32 @@ namespace _04_monitor
     {
         class LockCounter
         {
-            int number;
-            int evenNumbers;
-            public int Number { get { return number; } }
-            public int EvenNumbers { get { return evenNumbers; } }
-            public void UpdateFields()
+             int number;        //3
+             int evenNumbers;   //0
+            public  int Number { get { return number; } }
+            public  int EvenNumbers { get { return evenNumbers; } }
+            public  void UpdateFields()
             {
+           
                 for (int i = 0; i < 1_000_000; ++i)
-                {
-                    lock (this)
+                {                    
+                    // this- pointer // вказівник
+                    lock(this)
                     {
+                        //1 
+                        //Interlocked.Increment(ref number);//3
                         ++number;
-                        if (number % 2 == 0)
-                            ++evenNumbers;
+                        if (number % 2 == 0)//---------------------------
+                            //Interlocked.Increment(ref evenNumbers);
+                            ++evenNumbers; //1
                     }
                 }
             }
         }
         static void Main(string[] args)
         {
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+      
             Console.WriteLine($"Lock Sync:");
             LockCounter c = new LockCounter();
 
@@ -53,6 +61,7 @@ namespace _04_monitor
             for (int i = 0; i < threads.Length; ++i)
                 threads[i].Join();
 
+            //Console.WriteLine($"Field1: {c.Number}, Field2: {c.EvenNumbers}\n\n" ); // 5M 2.5M
             Console.WriteLine("Field1: {0}, Field2: {1}\n\n", c.Number, c.EvenNumbers); // 5M 2.5M
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -36,6 +37,7 @@ namespace _05_lock_static
         }
         static void Main(string[] args)
         {
+      
             Console.WriteLine("Lock Sync static:");            
             Thread[] threads = new Thread[5];
             for (int i = 0; i < threads.Length; ++i)
