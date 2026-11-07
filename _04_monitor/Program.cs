@@ -22,8 +22,8 @@ namespace _04_monitor
     {
         class LockCounter
         {
-             int number;        //3
-             int evenNumbers;   //0
+             int number;        //4
+             int evenNumbers;   //4
             public  int Number { get { return number; } }
             public  int EvenNumbers { get { return evenNumbers; } }
             public  void UpdateFields()
@@ -35,7 +35,7 @@ namespace _04_monitor
                     lock(this)
                     {
                         //1 
-                        //Interlocked.Increment(ref number);//3
+                        //Interlocked.Increment(ref number);//4
                         ++number;
                         if (number % 2 == 0)//---------------------------
                             //Interlocked.Increment(ref evenNumbers);

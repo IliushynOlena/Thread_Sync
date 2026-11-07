@@ -17,6 +17,9 @@ namespace _06_practice_1
         static void Main(string[] args)
         {
             Stat statistic = new Stat();
+
+     
+
     
             string[] files = Directory.GetFiles(@$"{
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\Test");
@@ -24,18 +27,20 @@ namespace _06_practice_1
             foreach (var file in files)
             {
                 Console.WriteLine(file);
-                Console.WriteLine(Path.GetFileName(file));
+                //Console.WriteLine(Path.GetFileName(file));
                 //FileStream fs = new FileStream(file, FileMode.Open);
                 //fs.Read
+               
 
                 //StreamReader sr = new StreamReader(file);
-                //sr.ReadToEnd();
+                //Console.WriteLine(sr.ReadToEnd()); ;
 
                 string text = File.ReadAllText(file);
-               
-                Thread thread = new Thread(TextAnalyse);
-                thread.Start(text);
                 Console.WriteLine(text);
+               
+                //Thread thread = new Thread(TextAnalyse);
+                //thread.Start(text);
+                //Console.WriteLine(text);
                 //Task.Run(() => TextAnalyse(text));
             }        
 

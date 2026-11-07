@@ -33,7 +33,7 @@ namespace _02_interlocker
                 {
                     for (int j = 1; j <= 1_000_000; ++j)
                     {
-                      
+                      // Counter.count++;
                         Interlocked.Increment(ref Counter.count);
                     }
                 });
